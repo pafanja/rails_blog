@@ -1,0 +1,87 @@
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        Menu <i class="fa fa-bars"></i>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-center">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/categories">Categories</a>
+        </li>
+        <li>
+          <a href="<%= new_post_path %>">New Post</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<header class="intro-header" style="background-image: url(<%= asset_path('about-bg.jpg') %>)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="site-heading">
+          <h1>Blog</h1>
+          <hr class="small">
+          <span class="subheading">Created with RoR</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <h2 class="section-heading"> <%= @post.name %> </h2>
+        <span class="caption text-muted">Category: <%= @post.category.name %> | Posted at: <%= @post.updated_at %></span>
+        <p>
+          <%= @post.content %>
+        </p>
+        <img class="img-responsive" src="<%= @post.file.url() %>" alt="">
+        <h4 class="caption text-muted">
+        <%= link_to 'Edit', edit_post_path(@post) %> |
+        <%= link_to 'Back', posts_path(@post) %>
+        </h4>
+      </div>
+    </div>
+  </div>
+</article>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <ul>
+        <div id="comments">
+          <%= render :partial => @post.comments %>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <%= form_for [@post, Comment.new], :remote => true, :html => { :id => "comment_form" } do |f| %>
+          Name:<br>
+          <%= f.text_area :author, id: 'comment_author', class: "text form-control" %>
+          Text:<br>
+          <%= f.text_area :content, id: 'comment_content', class: "text form-control" %><br>
+          <%= f.submit "Add comment", class: 'btn btn-default' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">2017</p>
+      </div>
+    </div>
+  </div>
+</footer>

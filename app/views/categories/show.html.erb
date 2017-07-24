@@ -1,0 +1,63 @@
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        Menu <i class="fa fa-bars"></i>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-center">
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/categories">Categories</a>
+        </li>
+        <li>
+          <a href="<%= new_post_path %>">New Post</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<header class="intro-header" style="background-image: url(<%= asset_path('about-bg.jpg') %>)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="site-heading">
+          <h1>Blog</h1>
+          <hr class="small">
+          <span class="subheading">Categories</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<article>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <h2 class="section-heading">
+          <%= @category.name %>
+        </h2>
+        <h2 class="section-heading">
+          <%= @category.description %>
+        </h2>
+        <h4 class="caption text-muted">
+          <%= link_to 'Edit', edit_category_path(@category) %> |
+          <%= link_to 'Back', categories_path %>
+        </h4>
+      </div>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">2017</p>
+      </div>
+    </div>
+  </div>
+</footer>

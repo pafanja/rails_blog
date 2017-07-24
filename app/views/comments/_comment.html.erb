@@ -1,0 +1,15 @@
+
+<%= div_for comment do %>
+    <li class="media">
+      <div class="media-body">
+        <div class="well well-sm">
+          <h4 class="media-heading text-uppercase reviews">
+              <%= comment.author %>
+          </h4>
+          <p class="media-comment">
+            <%= comment.content %>
+          </p>
+        </div>
+      </div>
+    </li>
+<% end %>

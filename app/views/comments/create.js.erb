@@ -1,0 +1,9 @@
+/**
+ * Created by pafanja on 22.07.2017.
+ */
+//('#comments').html('<$= escape_javascript(render (@post.comments)) %>');
+content = '<%= escape_javascript(render (@post.comments)) %>'
+$('#comments').fadeOut('slow').html(content).fadeIn('slow')
+$('#comment_author').val('')
+$('#comment_content').val('')
+
